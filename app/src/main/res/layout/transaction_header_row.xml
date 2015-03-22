@@ -1,0 +1,22 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:weightSum="3"
+    android:layout_height="wrap_content"
+    android:layout_width="fill_parent"
+    android:background="@color/transactionHeaderBackground">
+
+    <TextView android:id="@+id/descriptionDate" android:layout_width="0dp"
+        android:layout_weight="2" android:text="THIS IS TEST" android:layout_height="wrap_content"
+        android:textSize="@dimen/transactionHeaderTextSize"
+        android:padding="@dimen/viewpadding"
+        android:textStyle="bold"/>
+    <au.com.commbank.app.customview.MomentTextView android:id="@+id/momentDate"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:padding="@dimen/viewpadding"
+        android:text="11 Dec 2014"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/transactionHeaderTextSize"
+        android:textStyle="bold"
+        />
+</LinearLayout>
+

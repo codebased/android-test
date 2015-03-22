@@ -1,0 +1,10 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="viewpadding">2dp</dimen>
+    <dimen name="actionBarTextSize">25sp</dimen>
+    <dimen name="subHeadingTextSize">20sp</dimen>
+    <dimen name="normalTextSize">15sp</dimen>
+    <dimen name="transactionHeaderTextSize">20sp</dimen>
+</resources>

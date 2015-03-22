@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/boxBackground"
+        android:padding="12dp"
+        android:stretchColumns="*">
+
+        <TableRow
+            android:background="@color/tableRowBackground"
+            android:padding="@dimen/viewpadding">
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/transactionalIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription=""
+                    android:padding="@dimen/viewpadding"
+                    android:src="@mipmap/icon_transactional" />
+
+
+                <TextView
+                    android:id="@+id/accountName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/transactionalIcon"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/transactionalIcon"
+                    android:layout_toRightOf="@+id/transactionalIcon"
+                    android:padding="@dimen/viewpadding"
+                    android:text="Complete Access"
+                    android:textSize="@dimen/subHeadingTextSize"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/accountNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/accountName"
+                    android:layout_alignStart="@+id/accountName"
+                    android:layout_below="@+id/accountName"
+                    android:padding="@dimen/viewpadding"
+                    android:text="0 00   0 00 0000 "
+                    android:textColor="@color/greyText"
+                    android:textSize="@dimen/normalTextSize" />
+
+            </RelativeLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/grayBackground"
+            android:padding="@dimen/viewpadding">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="1"></View>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="@color/grayBackground"
+                android:text="@string/available_funds"
+                android:textColor="@color/greyText"
+                android:textSize="@dimen/normalTextSize" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="1">
+
+            </View>
+
+            <TextView
+                android:id="@+id/availableFundsTV"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="@color/grayBackground"
+                android:gravity="right"
+                android:padding="@dimen/viewpadding"
+                android:text="$372.10"
+                android:textColor="@color/greyText"
+                android:textSize="@dimen/normalTextSize"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/grayBackground"
+            android:padding="@dimen/viewpadding">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="1">
+
+            </View>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="@color/grayBackground"
+                android:text="@string/available_balance"
+                android:textColor="@color/greyText"
+                android:textSize="@dimen/normalTextSize" />
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="1">
+
+            </View>
+
+            <TextView
+                android:id="@+id/availableBalanceTV"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="@color/grayBackground"
+                android:gravity="right"
+                android:padding="@dimen/viewpadding"
+                android:text="$372.10"
+                android:textColor="@color/greyText"
+                android:textSize="@dimen/normalTextSize" />
+        </TableRow>
+
+    </TableLayout>
+</merge>

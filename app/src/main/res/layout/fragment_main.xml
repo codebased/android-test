@@ -1,0 +1,36 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_margin="2dp"
+    android:background="@color/actionBarBackground"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:id="@+id/ScrollView01"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <au.com.commbank.app.customview.AccountSummaryView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/accountSummaryHeader">
+
+            </au.com.commbank.app.customview.AccountSummaryView>
+
+            <TableLayout
+                android:id="@+id/transactionTable"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></TableLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="actionBarBackground">#FFFFFF</color>
+    <color name="greyText">#8A8A8A</color>
+    <color name="boxBackground">#649898</color>
+    <color name="grayBackground">#F6F6F6</color>
+    <color name="transactionRowBackground">#F6F6F6</color>
+    <color name="transactionHeaderBackground">#FFCC00</color>
+    <color name="actionBarTextColor">#000000</color>
+    <color name="tableRowBackground">#FFF</color>
+</resources>
+
