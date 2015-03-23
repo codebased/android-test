@@ -15,6 +15,7 @@
         android:padding="@dimen/viewpadding"
         android:text="11 Dec 2014"
         android:layout_height="wrap_content"
+        android:gravity="right"
         android:textSize="@dimen/transactionHeaderTextSize"
         android:textStyle="bold"
         />
