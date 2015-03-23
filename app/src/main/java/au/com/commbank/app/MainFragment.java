@@ -71,7 +71,7 @@ public class MainFragment extends CbaFragment {
         super.onCreate(savedInstanceState);
 
         // could use injection for object graph too.
-        // @todo it works but how much it works?.
+        // @todo this line works but how it works - is it because it is not runtime inject - need to confirm?.
         //  mainApplication.getObjectGraphInstance().inject(this);
         ((MainApplication) getActivity().getApplication()).getObjectGraphInstance().inject(this);
     }
@@ -81,7 +81,13 @@ public class MainFragment extends CbaFragment {
     public void onStart() {
         super.onStart();
         AccountModel model = accountService.Get();
-        setView(model);
+
+        if (model != null) {
+            setView(model);
+        }
+        else{
+            Toast.makeText(MainApplication.getInstance(), getString(R.string.datanotfound), Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
@@ -111,8 +117,13 @@ public class MainFragment extends CbaFragment {
     }
 
     private void setView(AccountModel model) {
+        cleanup();
         setAccountSummary(model.getAccount());
         setAccountTransactions(model);
+    }
+
+    private void cleanup() {
+      transactionTable.removeAllViews();
     }
 
     public void setAccountSummary(Account accountHeader) {

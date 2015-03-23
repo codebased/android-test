@@ -47,7 +47,7 @@
                     android:layout_alignStart="@+id/accountName"
                     android:layout_below="@+id/accountName"
                     android:padding="@dimen/viewpadding"
-                    android:text="0 00   0 00 0000 "
+                    android:text=""
                     android:textColor="@color/greyText"
                     android:textStyle="bold"
                     android:textSize="@dimen/normalTextSize" />
@@ -60,7 +60,8 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:background="@color/grayBackground"
-            android:padding="@dimen/viewpadding">
+            android:padding="@dimen/viewpadding"
+            android:weightSum="4">
 
             <View
                 android:layout_width="0dp"
@@ -68,17 +69,12 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:background="@color/grayBackground"
                 android:text="@string/available_funds"
                 android:textColor="@color/greyText"
+                android:layout_gravity="left"
                 android:textSize="@dimen/normalTextSize" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_weight="1">
-
-            </View>
 
             <TextView
                 android:id="@+id/availableFundsTV"
@@ -87,7 +83,7 @@
                 android:background="@color/grayBackground"
                 android:gravity="right"
                 android:padding="@dimen/viewpadding"
-                android:text="$372.10"
+                android:text=""
                 android:textColor="@color/greyText"
                 android:textSize="@dimen/normalTextSize"
                 android:textStyle="bold" />
@@ -97,29 +93,22 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:background="@color/grayBackground"
-            android:padding="@dimen/viewpadding">
+            android:padding="@dimen/viewpadding"
+            android:weightSum="4">
 
             <View
                 android:layout_width="0dp"
                 android:layout_weight="1">
-
             </View>
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:background="@color/grayBackground"
                 android:text="@string/available_balance"
+                android:layout_gravity="left"
                 android:textColor="@color/greyText"
                 android:textSize="@dimen/normalTextSize" />
-
-
-            <View
-                android:layout_width="0dp"
-                android:layout_weight="1">
-
-            </View>
-
             <TextView
                 android:id="@+id/availableBalanceTV"
                 android:layout_width="0dp"
@@ -127,7 +116,7 @@
                 android:background="@color/grayBackground"
                 android:gravity="right"
                 android:padding="@dimen/viewpadding"
-                android:text="$372.10"
+                android:text=""
                 android:textColor="@color/greyText"
                 android:textSize="@dimen/normalTextSize" />
         </TableRow>

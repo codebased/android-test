@@ -10,4 +10,5 @@
     <string name="title_activity_maps">Find us</string>
     <string name="dateformat">dd/mm/yyyy</string>
     <string name="displayDateFormat">dd MMM yyyy</string>
+    <string name="datanotfound">Unable to retrieve data, please contact administrator.</string>
 </resources>
