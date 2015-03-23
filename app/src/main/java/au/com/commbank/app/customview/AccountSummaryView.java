@@ -26,7 +26,6 @@ public class AccountSummaryView extends TableLayout {
     @InjectView(R.id.availableFundsTV)
     TextView availableFundsTV;
 
-
     public AccountSummaryView(Context context) {
         super(context);
         init();
@@ -34,7 +33,7 @@ public class AccountSummaryView extends TableLayout {
 
     public AccountSummaryView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
+        this.init();
     }
 
     private void init() {
@@ -43,12 +42,17 @@ public class AccountSummaryView extends TableLayout {
         ButterKnife.inject(this);
     }
 
+    /* @todo can be further improve by providing 4 string properties and then we are good
+    to support xml based.
+    Lets don't do that for this release.
+     */
     public void setAccountHeader(Account account) {
+
         if (account != null) {
-            accountName.setText(account.getAccountName());
-            accountNumber.setText(account.getAccountNumber());
-            availableBalanceTV.setText(Utils.formatCurrency(account.getBalance()));
-            availableFundsTV.setText(Utils.formatCurrency(account.getAvailable()));
+            this.accountName.setText(account.getAccountName());
+            this.accountNumber.setText(account.getAccountNumber());
+            this.availableBalanceTV.setText(Utils.formatCurrency(account.getBalance()));
+            this.availableFundsTV.setText(Utils.formatCurrency(account.getAvailable()));
         }
     }
 }

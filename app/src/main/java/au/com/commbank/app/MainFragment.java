@@ -26,7 +26,6 @@ import au.com.commbank.app.pojo.Account;
 import au.com.commbank.app.pojo.AccountModel;
 import au.com.commbank.app.pojo.Atm;
 import au.com.commbank.app.pojo.Transaction;
-import au.com.commbank.app.services.AccountService;
 import au.com.commbank.app.services.IAccountService;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -71,8 +70,9 @@ public class MainFragment extends CbaFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // I could reduce this easily by using injection for object graph too but lets don't do it fo rnow.
-
+        // could use injection for object graph too.
+        // @todo it works but how much it works?.
+        //  mainApplication.getObjectGraphInstance().inject(this);
         ((MainApplication) getActivity().getApplication()).getObjectGraphInstance().inject(this);
     }
 
@@ -110,7 +110,6 @@ public class MainFragment extends CbaFragment {
         mListener = null;
     }
 
-
     private void setView(AccountModel model) {
         setAccountSummary(model.getAccount());
         setAccountTransactions(model);
@@ -123,6 +122,38 @@ public class MainFragment extends CbaFragment {
     private void setAccountTransactions(AccountModel model) {
 
         String lastDate = Constants.EMPTY_STRING;
+
+        List<Transaction> transactions = getAllTransactions(model);
+
+        for (Iterator<Transaction> i = transactions.iterator(); i.hasNext(); ) {
+            Transaction item = i.next();
+
+            if (!lastDate.equalsIgnoreCase(item.getEffectiveDate())) {
+                // if they are not same dates then definitely create header.
+                setTransactionHeaderRow(item);
+            }
+
+            Atm atm = null;
+            if (!Utils.isEmptyOrNull(item.getAtmId())) {
+                atm = searchAtm(item.getAtmId(), model.getAtms());
+            }
+
+            setTransactionRow(item, atm);
+            lastDate = item.getEffectiveDate();
+        }
+    }
+
+    private Atm searchAtm(String searchterm, List<Atm> atms) {
+        for (Atm atm : atms) {
+            if (atm != null && atm.getId().equalsIgnoreCase(searchterm)) {
+                return atm;
+            }
+        }
+
+        return null;
+    }
+
+    private List<Transaction> getAllTransactions(AccountModel model) {
 
         List<Transaction> transactions = new ArrayList<>();
 
@@ -141,48 +172,34 @@ public class MainFragment extends CbaFragment {
             }
         });
 
-        for (Iterator<Transaction> i = transactions.iterator(); i.hasNext(); ) {
-            Transaction item = i.next();
-
-            if (!lastDate.equalsIgnoreCase(item.getEffectiveDate())) {
-                // if they are not same dates then definitely create a header.
-                setTransactionHeaderRow(item);
-            }
-
-            Atm atm = null;
-            if (!Utils.isEmptyOrNull(item.getAtmId())) {
-                for (Atm a : model.getAtms()) {
-                    if (a != null && a.getId().equalsIgnoreCase(item.getAtmId())) {
-                        atm = a;
-                        break;
-                    }
-                }
-            }
-
-            setTransactionRow(item,atm);
-            lastDate = item.getEffectiveDate();
-        }
+        return transactions;
     }
 
-    private void setTransactionRow(Transaction item,Atm atm) {
+    private void setTransactionRow(Transaction item, Atm atm) {
 
         TransactionRow row = new TransactionRow(getActivity().getBaseContext(), item, atm);
-        if ( atm != null ){
+        if (atm != null) {
             row.SetOnClickListner(new TransactionRow.OnClickListener() {
                 @Override
                 public void OnClick(Atm atm) {
-                    MapFragment fragment = new MapFragment();
-                    Bundle args = new Bundle();
-                    args.putDouble("lat", atm.getLocation().getLat());
-                    args.putDouble("lng", atm.getLocation().getLng());
-                    args.putString("atmTitle", atm.getName());
 
-                    fragment.setArguments(args);
-                    getActivity().getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.container, fragment ).addToBackStack("map").commit();
+                    if (Utils.isNetworkAvailable(getActivity())) {
+                        MapFragment fragment = new MapFragment();
+                        Bundle args = new Bundle();
+                        args.putDouble("lat", atm.getLocation().getLat());
+                        args.putDouble("lng", atm.getLocation().getLng());
+                        args.putString("atmTitle", atm.getName());
+
+                        fragment.setArguments(args);
+                        getActivity().getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.container, fragment).addToBackStack("map").commit();
+                    } else {
+                        Toast.makeText(getActivity(), "To view Map, you must be connected with the Internet.", Toast.LENGTH_LONG).show();
+                    }
                 }
             });
         }
+
         transactionTable.addView(row);
     }
 
@@ -191,7 +208,6 @@ public class MainFragment extends CbaFragment {
         TransactionHeaderRow row = new TransactionHeaderRow(getActivity().getBaseContext(), item);
         transactionTable.addView(row);
     }
-
 
     /**
      * This interface must be implemented by activities that contain this
@@ -207,5 +223,4 @@ public class MainFragment extends CbaFragment {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
     }
-
 }

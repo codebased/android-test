@@ -2,6 +2,8 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/transactionRowBackground"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
     android:weightSum="3">
 
     <TextView
@@ -9,7 +11,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="2"
-
+        android:gravity="center_vertical"
+        android:padding="@dimen/viewpadding"
         android:text="THIS IS TEST"
         android:textSize="@dimen/normalTextSize" />
 
@@ -17,7 +20,10 @@
         android:id="@+id/amount"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:gravity="right"
+        android:padding="@dimen/viewpadding"
         android:layout_weight="1"
+        android:textStyle="bold"
         android:text="11 Dec 2014"
         android:textSize="@dimen/normalTextSize" />
 </LinearLayout>

@@ -49,6 +49,7 @@
                     android:padding="@dimen/viewpadding"
                     android:text="0 00   0 00 0000 "
                     android:textColor="@color/greyText"
+                    android:textStyle="bold"
                     android:textSize="@dimen/normalTextSize" />
 
             </RelativeLayout>

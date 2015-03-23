@@ -4,6 +4,9 @@ import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import android.net.ConnectivityManager;
+import android.content.Context;
+import android.net.NetworkInfo;
 
 /**
  * Created by codebased on 22/03/15.
@@ -29,9 +32,11 @@ public class Utils {
     public static SimpleDateFormat instanceDateFormat() {
 
         if (instanceSdf == null) {
-            instanceSdf = new SimpleDateFormat(MainApplication.getInstance().getResources().getString(R.string.dateformat));
+            instanceSdf = new SimpleDateFormat();
         }
 
+        // applying a default pattern that can be further changed as when required.
+        instanceSdf.applyPattern(MainApplication.getInstance().getResources().getString(R.string.dateformat));
         return instanceSdf;
     }
 
@@ -45,5 +50,27 @@ public class Utils {
         } catch (ParseException ex) {
             throw ex;
         }
+    }
+
+    public static String displayDateFormat(String effectiveDate) {
+
+        SimpleDateFormat simpleDateFormat = instanceDateFormat();
+
+        try {
+            Date date = simpleDateFormat.parse(effectiveDate);
+            SimpleDateFormat newFormat = new SimpleDateFormat(MainApplication.getInstance().getResources().getString(R.string.displayDateFormat));
+            return newFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return Constants.EMPTY_STRING;
+    }
+
+    public static  boolean isNetworkAvailable(Context ctx) {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) ctx.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }

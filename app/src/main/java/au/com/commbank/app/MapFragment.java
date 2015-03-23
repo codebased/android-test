@@ -14,13 +14,18 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+
 
 /**
  * A fragment that launches other parts of the demo application.
  */
 public class MapFragment extends CbaFragment {
 
+    @InjectView(R.id.mapView)
     MapView mMapView;
+
     private GoogleMap googleMap;
     private Double latitude;
     private Double longitude;
@@ -31,9 +36,11 @@ public class MapFragment extends CbaFragment {
                              Bundle savedInstanceState) {
 
         // inflate and return the layout
-        View v = inflater.inflate(R.layout.fragment_map, container,
+        View view = inflater.inflate(R.layout.fragment_map, container,
                 false);
-        mMapView = (MapView) v.findViewById(R.id.mapView);
+
+        ButterKnife.inject(this, view);
+
         mMapView.onCreate(savedInstanceState);
 
         latitude = getArguments().getDouble("lat");
@@ -57,10 +64,12 @@ public class MapFragment extends CbaFragment {
         MarkerOptions marker = new MarkerOptions().position(
                 new LatLng(latitude, longitude)).title(atmTitle);
 
-        // Changing marker icon
-        marker.icon(BitmapDescriptorFactory
-                .fromResource(R.mipmap.icon_welcome_logo));
-
+        try {
+            // Changing marker icon
+            marker.icon(BitmapDescriptorFactory
+                    .fromResource(R.mipmap.icon_welcome_logo));
+        }
+        catch(Exception ex){}
         // adding marker
         googleMap.addMarker(marker);
         CameraPosition cameraPosition = new CameraPosition.Builder()
@@ -69,7 +78,7 @@ public class MapFragment extends CbaFragment {
                 .newCameraPosition(cameraPosition));
 
         // Perform any camera updates here
-        return v;
+        return view;
     }
 
     @Override

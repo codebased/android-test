@@ -34,7 +34,6 @@ public class MainActivity extends ActionBarActivity implements MainFragment.OnFr
 
     @Override
     public void onFragmentInteraction(Uri uri) {
-
     }
 
 

@@ -14,7 +14,7 @@ import dagger.Provides;
 )
 public class CbaModule {
 
-    @Provides
+    @Provides @Singleton
     public IAccountService provideAccountService() {
         return new AccountService();
     }
