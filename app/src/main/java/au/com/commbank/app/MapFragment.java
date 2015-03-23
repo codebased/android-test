@@ -68,8 +68,13 @@ public class MapFragment extends CbaFragment {
             // Changing marker icon
             marker.icon(BitmapDescriptorFactory
                     .fromResource(R.mipmap.icon_welcome_logo));
+        } catch (Exception ex) {
+
+            // @todo can be further improved when person is calling this fragment.
+            // it looks like the good service is not available.
+            return view;
         }
-        catch(Exception ex){}
+
         // adding marker
         googleMap.addMarker(marker);
         CameraPosition cameraPosition = new CameraPosition.Builder()

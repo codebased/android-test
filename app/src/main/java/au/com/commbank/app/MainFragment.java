@@ -71,7 +71,8 @@ public class MainFragment extends CbaFragment {
         super.onCreate(savedInstanceState);
 
         // could use injection for object graph too.
-        // @todo this line works but how it works - is it because it is not runtime inject - need to confirm?.
+        // @todo this line works but how it works - is it because it is not runtime inject - it can make
+        // reading difficult.
         //  mainApplication.getObjectGraphInstance().inject(this);
         ((MainApplication) getActivity().getApplication()).getObjectGraphInstance().inject(this);
     }
@@ -84,8 +85,7 @@ public class MainFragment extends CbaFragment {
 
         if (model != null) {
             setView(model);
-        }
-        else{
+        } else {
             Toast.makeText(MainApplication.getInstance(), getString(R.string.datanotfound), Toast.LENGTH_LONG).show();
         }
     }
@@ -123,7 +123,7 @@ public class MainFragment extends CbaFragment {
     }
 
     private void cleanup() {
-      transactionTable.removeAllViews();
+        transactionTable.removeAllViews();
     }
 
     public void setAccountSummary(Account accountHeader) {
@@ -195,15 +195,17 @@ public class MainFragment extends CbaFragment {
                 public void OnClick(Atm atm) {
 
                     if (Utils.isNetworkAvailable(getActivity())) {
-                        MapFragment fragment = new MapFragment();
-                        Bundle args = new Bundle();
-                        args.putDouble("lat", atm.getLocation().getLat());
-                        args.putDouble("lng", atm.getLocation().getLng());
-                        args.putString("atmTitle", atm.getName());
+                        if (Utils.isGooglePlayServicesAvailable(getActivity())) {
+                            MapFragment fragment = new MapFragment();
+                            Bundle args = new Bundle();
+                            args.putDouble("lat", atm.getLocation().getLat());
+                            args.putDouble("lng", atm.getLocation().getLng());
+                            args.putString("atmTitle", atm.getName());
 
-                        fragment.setArguments(args);
-                        getActivity().getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.container, fragment).addToBackStack("map").commit();
+                            fragment.setArguments(args);
+                            getActivity().getSupportFragmentManager().beginTransaction()
+                                    .replace(R.id.container, fragment).addToBackStack("map").commit();
+                        }
                     } else {
                         Toast.makeText(getActivity(), "To view Map, you must be connected with the Internet.", Toast.LENGTH_LONG).show();
                     }

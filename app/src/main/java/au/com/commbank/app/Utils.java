@@ -4,9 +4,15 @@ import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import android.app.Activity;
 import android.net.ConnectivityManager;
 import android.content.Context;
 import android.net.NetworkInfo;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.common.ConnectionResult;
+import 	android.app.Dialog;
+
 
 /**
  * Created by codebased on 22/03/15.
@@ -72,5 +78,16 @@ public class Utils {
                 = (ConnectivityManager) ctx.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
+    public static boolean isGooglePlayServicesAvailable(Activity activity) {
+        final int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(activity);
+        if (status != ConnectionResult.SUCCESS) {
+            Dialog dialog = GooglePlayServicesUtil.getErrorDialog(status, activity , 1);
+            dialog.show();
+            return false;
+        } else {
+            return true;
+        }
     }
 }
