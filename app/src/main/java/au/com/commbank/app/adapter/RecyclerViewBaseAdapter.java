@@ -6,7 +6,8 @@ import android.view.View;
 
 import java.util.List;
 
-public abstract class RecyclerViewBaseAdapter<TViewHolder extends BaseListItemViewHolder<TModel>, TModel> extends RecyclerView.Adapter
+public abstract class RecyclerViewBaseAdapter<TViewHolder extends BaseListItemViewHolder<TModel>, TModel>
+        extends RecyclerView.Adapter
         <TViewHolder> {
 
     protected List<TModel> mItems;

@@ -8,7 +8,7 @@
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">Find us</string>
-    <string name="dateformat">dd/mm/yyyy</string>
+    <string name="dateformat">dd/MM/yyyy</string>
     <string name="displayDateFormat">dd MMM yyyy</string>
     <string name="datanotfound">Unable to retrieve data, please contact administrator.</string>
 </resources>

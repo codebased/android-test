@@ -60,7 +60,7 @@ public class Transaction {
      * @param effectiveDate The effectiveDate
      */
     @JsonProperty("effectiveDate")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/mm/yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     public void setEffectiveDate(Date effectiveDate) {
         this.effectiveDate = effectiveDate;
     }
