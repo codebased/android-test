@@ -96,6 +96,10 @@ public class TransactionRow extends LinearLayout {
         mClickListner = listner;
     }
 
+    public void setValues(Transaction transaction, Atm atm) {
+        init(transaction, atm);
+    }
+
     public interface OnClickListener {
         void OnClick(Atm atm);
     }

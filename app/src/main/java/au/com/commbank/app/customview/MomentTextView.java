@@ -32,17 +32,21 @@ public class MomentTextView extends TextView {
             try {
 
                 Date transactionDate = Utils.instanceDateFormat().parse(text.toString());
-                Date currentDate = new Date();
+                setText(transactionDate, type);
 
-                // umm.. I don't know if DateUtils functions... can do the magic here.
-                long difference = currentDate.getTime() - transactionDate.getTime();
-                long days = TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS);
-
-                super.setText(String.format("%d days ago", days), type);
             } catch (ParseException ex) {
                 // well just don't do anything for now.
                 super.setText(text, type);
             }
         }
+    }
+
+    public void setText(Date date, BufferType type) {
+        Date currentDate = new Date();
+        // umm.. I don't know if DateUtils functions... can do the magic here.
+        long difference = currentDate.getTime() - date.getTime();
+        long days = TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS);
+
+        super.setText(String.format("%d days ago", days), type);
     }
 }

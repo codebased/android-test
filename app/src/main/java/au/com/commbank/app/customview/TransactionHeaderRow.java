@@ -48,11 +48,15 @@ public class TransactionHeaderRow extends LinearLayout {
 
         if  (transaction != null ) {
             descriptionDate.setText(Utils.displayDateFormat(transaction.getEffectiveDate()));
-            momentDate.setText(transaction.getEffectiveDate());
+            momentDate.setText(transaction.getEffectiveDate(), TextView.BufferType.NORMAL);
         }
         else{
             descriptionDate.setText(Constants.EMPTY_STRING);
             momentDate.setText(Constants.EMPTY_STRING);
         }
+    }
+
+    public void setValues(Transaction transaction){
+        init(transaction);
     }
 }

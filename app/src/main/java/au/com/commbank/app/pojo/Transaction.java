@@ -1,8 +1,14 @@
 package au.com.commbank.app.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import java.text.ParseException;
+import java.util.Date;
+
+import au.com.commbank.app.Utils;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 
@@ -18,7 +24,7 @@ public class Transaction {
     @JsonProperty("id")
     private String id;
     @JsonProperty("effectiveDate")
-    private String effectiveDate;
+    private Date effectiveDate;
     @JsonProperty("description")
     private String description;
     @JsonProperty("amount")
@@ -46,7 +52,7 @@ public class Transaction {
      * @return The effectiveDate
      */
     @JsonProperty("effectiveDate")
-    public String getEffectiveDate() {
+    public Date getEffectiveDate() {
         return effectiveDate;
     }
 
@@ -54,7 +60,8 @@ public class Transaction {
      * @param effectiveDate The effectiveDate
      */
     @JsonProperty("effectiveDate")
-    public void setEffectiveDate(String effectiveDate) {
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/mm/yyyy")
+    public void setEffectiveDate(Date effectiveDate) {
         this.effectiveDate = effectiveDate;
     }
 

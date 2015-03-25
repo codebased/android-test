@@ -6,31 +6,17 @@
     android:background="@color/actionBarBackground"
     android:orientation="vertical">
 
-    <ScrollView
-        android:id="@+id/ScrollView01"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
 
 
-            <au.com.commbank.app.customview.AccountSummaryView
+
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/transactionListView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/accountSummaryHeader">
+                android:scrollbars="vertical"
+                />
 
-            </au.com.commbank.app.customview.AccountSummaryView>
-
-            <TableLayout
-                android:id="@+id/transactionTable"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"></TableLayout>
-
-        </LinearLayout>
-
-    </ScrollView>
 
 </LinearLayout>

@@ -4,23 +4,18 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TableLayout;
 import android.widget.Toast;
 
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.inject.Inject;
 
-import au.com.commbank.app.customview.AccountSummaryView;
-import au.com.commbank.app.customview.TransactionHeaderRow;
+import au.com.commbank.app.adapter.RecyclerViewBaseAdapter;
+import au.com.commbank.app.adapter.RecyclerViewTransactionAdapter;
 import au.com.commbank.app.customview.TransactionRow;
 import au.com.commbank.app.pojo.Account;
 import au.com.commbank.app.pojo.AccountModel;
@@ -29,6 +24,7 @@ import au.com.commbank.app.pojo.Transaction;
 import au.com.commbank.app.services.IAccountService;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import android.support.v7.widget.LinearLayoutManager;
 
 
 /**
@@ -41,24 +37,21 @@ import butterknife.InjectView;
  */
 public class MainFragment extends CbaFragment {
 
-    @InjectView(R.id.accountSummaryHeader)
-    AccountSummaryView accountSummaryView;
-
-    @InjectView(R.id.transactionTable)
-    TableLayout transactionTable;
+    @InjectView(R.id.transactionListView)
+    RecyclerView transactionsView;
 
     @Inject
     IAccountService accountService;
 
     private OnFragmentInteractionListener mListener;
 
+    public MainFragment() {
+        // Required empty public constructor
+    }
+
     public static MainFragment newInstance() {
         MainFragment fragment = new MainFragment();
         return fragment;
-    }
-
-    public MainFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -75,19 +68,36 @@ public class MainFragment extends CbaFragment {
         // reading difficult.
         //  mainApplication.getObjectGraphInstance().inject(this);
         ((MainApplication) getActivity().getApplication()).getObjectGraphInstance().inject(this);
+
+
+    }
+
+    // Append more data into the adapter
+    public void customLoadMoreDataFromApi(int offset) {
+        // This method probably sends out a network request and appends new data items to your adapter.
+        // Use the offset value and add it as a parameter to your API request to retrieve paginated data.
+        // Deserialize API response and then construct new objects to append to the adapter
+
     }
 
 
     @Override
     public void onStart() {
         super.onStart();
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        transactionsView.setLayoutManager(llm);
+        transactionsView.setHasFixedSize(true);
         AccountModel model = accountService.Get();
 
-        if (model != null) {
-            setView(model);
-        } else {
-            Toast.makeText(MainApplication.getInstance(), getString(R.string.datanotfound), Toast.LENGTH_LONG).show();
-        }
+        RecyclerViewTransactionAdapter ca = new RecyclerViewTransactionAdapter(model.getAllTransactions());
+        transactionsView.setAdapter(ca);
+
+//        if (model != null) {
+//            setView(model);
+//        } else {
+//            Toast.makeText(MainApplication.getInstance(), getString(R.string.datanotfound), Toast.LENGTH_LONG).show();
+//        }
     }
 
     @Override
@@ -119,40 +129,18 @@ public class MainFragment extends CbaFragment {
     private void setView(AccountModel model) {
         cleanup();
         setAccountSummary(model.getAccount());
-        setAccountTransactions(model);
+
     }
 
     private void cleanup() {
-        transactionTable.removeAllViews();
+       // transactionTable.removeAllViews();
     }
 
     public void setAccountSummary(Account accountHeader) {
-        accountSummaryView.setAccountHeader(accountHeader);
     }
 
-    private void setAccountTransactions(AccountModel model) {
 
-        String lastDate = Constants.EMPTY_STRING;
 
-        List<Transaction> transactions = getAllTransactions(model);
-
-        for (Iterator<Transaction> i = transactions.iterator(); i.hasNext(); ) {
-            Transaction item = i.next();
-
-            if (!lastDate.equalsIgnoreCase(item.getEffectiveDate())) {
-                // if they are not same dates then definitely create header.
-                setTransactionHeaderRow(item);
-            }
-
-            Atm atm = null;
-            if (!Utils.isEmptyOrNull(item.getAtmId())) {
-                atm = searchAtm(item.getAtmId(), model.getAtms());
-            }
-
-            setTransactionRow(item, atm);
-            lastDate = item.getEffectiveDate();
-        }
-    }
 
     private Atm searchAtm(String searchterm, List<Atm> atms) {
         for (Atm atm : atms) {
@@ -164,27 +152,7 @@ public class MainFragment extends CbaFragment {
         return null;
     }
 
-    private List<Transaction> getAllTransactions(AccountModel model) {
 
-        List<Transaction> transactions = new ArrayList<>();
-
-        transactions.addAll(model.getTransactions());
-        transactions.addAll(model.getPending());
-
-        Collections.sort(transactions, new Comparator<Transaction>() {
-            @Override
-            public int compare(Transaction sourcetrn, Transaction targettrn) {
-                try {
-                    return Utils.CompareDates(targettrn.getEffectiveDate(), sourcetrn.getEffectiveDate());
-                } catch (ParseException e) {
-                    Toast.makeText(MainApplication.getInstance(), e.toString(), Toast.LENGTH_LONG).show();
-                    return 0;
-                }
-            }
-        });
-
-        return transactions;
-    }
 
     private void setTransactionRow(Transaction item, Atm atm) {
 
@@ -213,13 +181,13 @@ public class MainFragment extends CbaFragment {
             });
         }
 
-        transactionTable.addView(row);
+        //transactionTable.addView(row);
     }
 
     private void setTransactionHeaderRow(Transaction item) {
 
-        TransactionHeaderRow row = new TransactionHeaderRow(getActivity().getBaseContext(), item);
-        transactionTable.addView(row);
+//        TransactionHeaderRow row = new TransactionHeaderRow(getActivity().getBaseContext(), item);
+//        transactionTable.addView(row);
     }
 
     /**
