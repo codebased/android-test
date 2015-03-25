@@ -5,6 +5,8 @@ import android.support.v7.app.ActionBarActivity;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.text.SimpleDateFormat;
+
 import dagger.Module;
 import dagger.ObjectGraph;
 

@@ -58,19 +58,9 @@ public class Utils {
         }
     }
 
-    public static String displayDateFormat(String effectiveDate) {
-
-        SimpleDateFormat simpleDateFormat = instanceDateFormat();
-
-        try {
-            Date date = simpleDateFormat.parse(effectiveDate);
-            SimpleDateFormat newFormat = new SimpleDateFormat(MainApplication.getInstance().getResources().getString(R.string.displayDateFormat));
-            return newFormat.format(date);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        return Constants.EMPTY_STRING;
+    public static String displayDateFormat(Date effectiveDate) {
+        SimpleDateFormat newFormat = new SimpleDateFormat(MainApplication.getInstance().getResources().getString(R.string.displayDateFormat));
+        return newFormat.format(effectiveDate);
     }
 
     public static  boolean isNetworkAvailable(Context ctx) {
