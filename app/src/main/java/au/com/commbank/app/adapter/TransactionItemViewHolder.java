@@ -13,7 +13,7 @@ import au.com.commbank.app.pojo.Transaction;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public final class TransactionListItemViewHolder extends BaseListItemViewHolder<Transaction> {
+public final class TransactionItemViewHolder extends BaseListItemViewHolder<Transaction>{
 
     @InjectView(R.id.transactionItem)
     TransactionRow row;
@@ -21,7 +21,10 @@ public final class TransactionListItemViewHolder extends BaseListItemViewHolder<
     @InjectView(R.id.transactionHeaderItem)
     TransactionHeaderRow headerRow;
 
-    public TransactionListItemViewHolder(View itemView) {
+    OnItemListner<TransactionRow> mListner ;
+
+
+    public TransactionItemViewHolder(View itemView) {
         super(itemView);
 
         ButterKnife.inject(this, itemView);
@@ -29,7 +32,8 @@ public final class TransactionListItemViewHolder extends BaseListItemViewHolder<
 
     @Override
     public void onClick(View v) {
-
+        if (mListner != null)
+            mListner.onClick(row);
     }
 
     public TransactionRow getRow() {
@@ -40,4 +44,7 @@ public final class TransactionListItemViewHolder extends BaseListItemViewHolder<
         return headerRow;
     }
 
+    public void setListner(OnItemListner<TransactionRow> listner){
+        this.mListner = listner;
+    }
 }

@@ -1,0 +1,11 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_height="match_parent" android:layout_width="match_parent"
+    android:orientation="vertical">
+
+    <au.com.commbank.app.customview.AccountSummaryView
+        android:id="@+id/header"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"/>
+
+
+
+</LinearLayout>

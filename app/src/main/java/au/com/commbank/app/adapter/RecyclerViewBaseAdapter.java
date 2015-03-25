@@ -2,13 +2,12 @@ package au.com.commbank.app.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
-import android.view.View;
 
 import java.util.List;
 
-public abstract class RecyclerViewBaseAdapter<TViewHolder extends BaseListItemViewHolder<TModel>, TModel>
+public abstract class RecyclerViewBaseAdapter<TModel>
         extends RecyclerView.Adapter
-        <TViewHolder> {
+        <RecyclerView.ViewHolder> {
 
     protected List<TModel> mItems;
 
@@ -21,8 +20,8 @@ public abstract class RecyclerViewBaseAdapter<TViewHolder extends BaseListItemVi
         this.mItems = modelData;
     }
 
-    public abstract void onBindViewHolder(TViewHolder viewHolder, int idx);
-    public abstract TViewHolder  onCreateViewHolder(ViewGroup viewGroup, int i);
+    public abstract void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int idx);
+    public abstract RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType);
 
     @Override
     public int getItemCount() {

@@ -1,5 +1,7 @@
 package au.com.commbank.app;
 
+import java.text.SimpleDateFormat;
+
 import javax.inject.Singleton;
 
 import au.com.commbank.app.services.AccountService;
@@ -9,7 +11,7 @@ import dagger.Provides;
 
 @Module(
         injects = {
-                MainFragment.class
+                MainFragment.class,
         }
 )
 public class CbaModule {

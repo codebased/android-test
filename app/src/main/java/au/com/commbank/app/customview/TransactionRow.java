@@ -66,7 +66,6 @@ public class TransactionRow extends LinearLayout {
 
         ButterKnife.inject(this);
 
-
         View.OnClickListener listener = new View.OnClickListener() {
             public void onClick(View v) {
                 if (mClickListner != null && mAtm != null) {
@@ -102,5 +101,9 @@ public class TransactionRow extends LinearLayout {
 
     public interface OnClickListener {
         void OnClick(Atm atm);
+    }
+
+    public Atm getAtm(){
+        return mAtm;
     }
 }

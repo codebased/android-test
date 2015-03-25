@@ -31,6 +31,7 @@ public class MomentTextView extends TextView {
 
             try {
 
+                // @todo get the format from customcontrol property such as pattern.
                 Date transactionDate = Utils.instanceDateFormat().parse(text.toString());
                 setText(transactionDate, type);
 

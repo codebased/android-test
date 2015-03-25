@@ -9,9 +9,11 @@ import android.app.Activity;
 import android.net.ConnectivityManager;
 import android.content.Context;
 import android.net.NetworkInfo;
+
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.ConnectionResult;
-import 	android.app.Dialog;
+
+import android.app.Dialog;
 
 
 /**
@@ -46,24 +48,13 @@ public class Utils {
         return instanceSdf;
     }
 
-    public static int CompareDates(String date1, String date2) throws ParseException {
-
-        try {
-            Date sourceDate = Utils.instanceDateFormat().parse(date1);
-            Date targetDate = Utils.instanceDateFormat().parse(date2);
-            return sourceDate.compareTo(targetDate);
-
-        } catch (ParseException ex) {
-            throw ex;
-        }
-    }
 
     public static String displayDateFormat(Date effectiveDate) {
         SimpleDateFormat newFormat = new SimpleDateFormat(MainApplication.getInstance().getResources().getString(R.string.displayDateFormat));
         return newFormat.format(effectiveDate);
     }
 
-    public static  boolean isNetworkAvailable(Context ctx) {
+    public static boolean isNetworkAvailable(Context ctx) {
         ConnectivityManager connectivityManager
                 = (ConnectivityManager) ctx.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
@@ -73,7 +64,7 @@ public class Utils {
     public static boolean isGooglePlayServicesAvailable(Activity activity) {
         final int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(activity);
         if (status != ConnectionResult.SUCCESS) {
-            Dialog dialog = GooglePlayServicesUtil.getErrorDialog(status, activity , 1);
+            Dialog dialog = GooglePlayServicesUtil.getErrorDialog(status, activity, 1);
             dialog.show();
             return false;
         } else {

@@ -13,6 +13,7 @@
         android:layout_weight="2"
         android:gravity="center_vertical"
         android:padding="@dimen/viewpadding"
+        android:duplicateParentState="true"
         android:text="THIS IS TEST"
         android:textSize="@dimen/normalTextSize" />
 
@@ -23,6 +24,7 @@
         android:gravity="right"
         android:padding="@dimen/viewpadding"
         android:layout_weight="1"
+        android:duplicateParentState="true"
         android:textStyle="bold"
         android:text="11 Dec 2014"
         android:textSize="@dimen/normalTextSize" />

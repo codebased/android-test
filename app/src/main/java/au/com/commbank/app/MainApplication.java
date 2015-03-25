@@ -1,13 +1,9 @@
 package au.com.commbank.app;
 
 import android.app.Application;
-import android.support.v7.app.ActionBarActivity;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.text.SimpleDateFormat;
-
-import dagger.Module;
 import dagger.ObjectGraph;
 
 /**
@@ -29,7 +25,7 @@ public class MainApplication extends Application {
     }
 
     private Object[] getModules() {
-        return new Object[]{new CbaModule()};
+        return new Object[]{new CbaModule()} ;
     }
 
     public void inject(Object target) {
