@@ -6,9 +6,9 @@ import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import au.com.commbank.app.Constants;
+import au.com.commbank.app.helper.Constants;
 import au.com.commbank.app.R;
-import au.com.commbank.app.Utils;
+import au.com.commbank.app.helper.Utils;
 import au.com.commbank.app.pojo.Transaction;
 import butterknife.ButterKnife;
 import butterknife.InjectView;

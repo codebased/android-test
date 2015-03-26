@@ -8,9 +8,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import au.com.commbank.app.Constants;
+import au.com.commbank.app.helper.Constants;
 import au.com.commbank.app.R;
-import au.com.commbank.app.Utils;
+import au.com.commbank.app.helper.Utils;
 import au.com.commbank.app.pojo.Atm;
 import au.com.commbank.app.pojo.Pending;
 import au.com.commbank.app.pojo.Transaction;
@@ -95,7 +95,7 @@ public class TransactionRow extends LinearLayout {
         mClickListner = listner;
     }
 
-    public void setValues(Transaction transaction, Atm atm) {
+    public void applyBinding(Transaction transaction, Atm atm) {
         init(transaction, atm);
     }
 

@@ -6,5 +6,5 @@
     <dimen name="actionBarTextSize">25sp</dimen>
     <dimen name="subHeadingTextSize">20sp</dimen>
     <dimen name="normalTextSize">15sp</dimen>
-    <dimen name="transactionHeaderTextSize">20sp</dimen>
+    <dimen name="transactionHeaderTextSize">16dp</dimen>
 </resources>

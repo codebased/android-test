@@ -7,7 +7,7 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 
 import au.com.commbank.app.R;
-import au.com.commbank.app.Utils;
+import au.com.commbank.app.helper.Utils;
 import au.com.commbank.app.pojo.Account;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -42,11 +42,10 @@ public class AccountSummaryView extends TableLayout {
         ButterKnife.inject(this);
     }
 
-    /* @todo can be further improve by providing 4 string properties and then we are good
-    to support xml based.
-    Lets don't do that for this release.
+    /* @todo can be further improve by providing 4 string properties to this custom control
+     and then we are good to support xml based. Lets don't do that for this release.
      */
-    public void setAccountHeader(Account account) {
+    public void applyBinding(Account account) {
 
         if (account != null) {
             this.accountName.setText(account.getAccountName());

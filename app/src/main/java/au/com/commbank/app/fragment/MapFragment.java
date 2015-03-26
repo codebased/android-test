@@ -1,4 +1,4 @@
-package au.com.commbank.app;
+package au.com.commbank.app.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,6 +14,8 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import au.com.commbank.app.CbaFragment;
+import au.com.commbank.app.R;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
@@ -43,10 +45,9 @@ public class MapFragment extends CbaFragment {
 
         mMapView.onCreate(savedInstanceState);
 
+        // @todo could check for validation in the future.
         latitude = getArguments().getDouble("lat");
-
         longitude = getArguments().getDouble("lng");
-
         atmTitle = getArguments().getString("atmTitle");
 
         mMapView.onResume();// needed to get the map to display immediately
@@ -69,7 +70,6 @@ public class MapFragment extends CbaFragment {
             marker.icon(BitmapDescriptorFactory
                     .fromResource(R.mipmap.icon_welcome_logo));
         } catch (Exception ex) {
-
             // @todo can be further improved when person is calling this fragment.
             // it looks like the good service is not available.
             return view;
@@ -112,6 +112,6 @@ public class MapFragment extends CbaFragment {
 
     @Override
     public String getTitle() {
-        return "Find us";
+        return getString(R.string.title_mapfragement);
     }
 }

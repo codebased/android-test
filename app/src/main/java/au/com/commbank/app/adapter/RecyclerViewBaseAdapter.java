@@ -12,19 +12,19 @@ public abstract class RecyclerViewBaseAdapter<TModel>
     protected List<TModel> mItems;
 
     public RecyclerViewBaseAdapter(List<TModel> modelData) {
-        if (modelData == null) {
-            throw new IllegalArgumentException(
-                    "modelData must not be null");
+        if (modelData == null || !(modelData instanceof List)) {
+            throw new IllegalArgumentException("modelData must not be null and should be of type List<>");
         }
 
         this.mItems = modelData;
     }
 
-    public abstract void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int idx);
-    public abstract RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType);
-
     @Override
     public int getItemCount() {
         return mItems.size();
     }
+
+    public abstract void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int idx);
+
+    public abstract RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType);
 }

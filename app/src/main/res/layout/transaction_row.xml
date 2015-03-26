@@ -12,7 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="2"
         android:gravity="center_vertical"
-        android:padding="@dimen/viewpadding"
+        android:padding="5dp"
+        android:clickable="true"
         android:duplicateParentState="true"
         android:text="THIS IS TEST"
         android:textSize="@dimen/normalTextSize" />
@@ -22,10 +23,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="right"
-        android:padding="@dimen/viewpadding"
+        android:padding="5dp"
         android:layout_weight="1"
+        android:clickable="true"
         android:duplicateParentState="true"
         android:textStyle="bold"
+
         android:text="11 Dec 2014"
         android:textSize="@dimen/normalTextSize" />
 </LinearLayout>

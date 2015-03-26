@@ -8,10 +8,6 @@ public abstract class BaseListItemViewHolder<TModel>
 
     protected TModel mModel;
 
-    public TModel getModel() {
-        return mModel;
-    }
-
     public BaseListItemViewHolder(View itemView) {
         super(itemView);
         itemView.setOnClickListener(this);

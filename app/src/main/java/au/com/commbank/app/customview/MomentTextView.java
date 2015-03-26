@@ -7,9 +7,10 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-import au.com.commbank.app.Utils;
+import au.com.commbank.app.helper.Utils;
 
 public class MomentTextView extends TextView {
+
     public MomentTextView(Context context) {
         super(context);
     }
@@ -30,7 +31,6 @@ public class MomentTextView extends TextView {
         } else {
 
             try {
-
                 // @todo get the format from customcontrol property such as pattern.
                 Date transactionDate = Utils.instanceDateFormat().parse(text.toString());
                 setText(transactionDate, type);

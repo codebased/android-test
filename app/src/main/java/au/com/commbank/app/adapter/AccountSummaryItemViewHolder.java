@@ -13,8 +13,8 @@ import butterknife.InjectView;
  */
 public class AccountSummaryItemViewHolder extends BaseListItemViewHolder<Account> {
 
-    @InjectView(R.id.header)
-    AccountSummaryView header;
+    @InjectView(R.id.accountSummaryHeaderView)
+    AccountSummaryView mAccountSummaryHeaderView;
 
     public AccountSummaryItemViewHolder(View itemView) {
         super(itemView);
@@ -23,10 +23,9 @@ public class AccountSummaryItemViewHolder extends BaseListItemViewHolder<Account
 
     @Override
     public void onClick(View v) {
-
     }
 
-    public AccountSummaryView getAccountSummary(){
-        return header;
+    public AccountSummaryView getAccountSummaryHeaderView() {
+        return mAccountSummaryHeaderView;
     }
 }

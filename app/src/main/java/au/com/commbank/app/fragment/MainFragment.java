@@ -1,4 +1,4 @@
-package au.com.commbank.app;
+package au.com.commbank.app.fragment;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -12,9 +12,13 @@ import android.widget.Toast;
 
 import javax.inject.Inject;
 
-import au.com.commbank.app.adapter.OnItemListner;
-import au.com.commbank.app.adapter.RecyclerViewTransactionAdapter;
+import au.com.commbank.app.CbaFragment;
+import au.com.commbank.app.MainApplication;
+import au.com.commbank.app.R;
+import au.com.commbank.app.adapter.OnListItemListener;
+import au.com.commbank.app.adapter.RecyclerHeaderViewTransactionAdapter;
 import au.com.commbank.app.customview.TransactionRow;
+import au.com.commbank.app.helper.Utils;
 import au.com.commbank.app.pojo.AccountModel;
 import au.com.commbank.app.pojo.Atm;
 import au.com.commbank.app.services.IAccountService;
@@ -24,7 +28,7 @@ import butterknife.InjectView;
 public class MainFragment extends CbaFragment {
 
     @InjectView(R.id.transactionListView)
-    RecyclerView transactionsView;
+    RecyclerView transactionsViewContainer;
 
     @Inject
     IAccountService accountService;
@@ -32,28 +36,23 @@ public class MainFragment extends CbaFragment {
     private OnFragmentInteractionListener mListener;
 
     public MainFragment() {
-        // Required empty public constructor
     }
 
     public static MainFragment newInstance() {
+        // @todo follow standard pattern in next release.
         MainFragment fragment = new MainFragment();
         return fragment;
     }
 
     @Override
     public String getTitle() {
-        return "Account details";
+        return getString(R.string.title_mainfragment);
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // could use injection for object graph too.
-        // @todo this line works but how it works - is it because it is not runtime inject - it can make
-        // reading difficult.
-        //  mainApplication.getObjectGraphInstance().inject(this);
-        ((MainApplication) getActivity().getApplication()).getObjectGraphInstance().inject(this);
+        MainApplication.getObjectGraphInstance().inject(this);
     }
 
     @Override
@@ -61,44 +60,26 @@ public class MainFragment extends CbaFragment {
         super.onStart();
 
         AccountModel model = accountService.Get();
-        if ( model == null) {
+        if (model == null) {
             Toast.makeText(MainApplication.getInstance(), getString(R.string.datanotfound), Toast.LENGTH_LONG).show();
-        }
-        else {
+        } else {
             LinearLayoutManager llm = new LinearLayoutManager(getActivity());
             llm.setOrientation(LinearLayoutManager.VERTICAL);
-            transactionsView.setLayoutManager(llm);
-            transactionsView.setHasFixedSize(true);
+            transactionsViewContainer.setLayoutManager(llm);
+            transactionsViewContainer.setHasFixedSize(true);
 
-            RecyclerViewTransactionAdapter ca = new RecyclerViewTransactionAdapter(model.getAllTransactions());
+            RecyclerHeaderViewTransactionAdapter ca = new RecyclerHeaderViewTransactionAdapter(model.getAllTransactions());
             ca.setAccountModel(model);
-            ca.setListner(new OnItemListner<TransactionRow>() {
+            ca.setListener(new OnListItemListener<TransactionRow>() {
                 @Override
                 public void onClick(TransactionRow row) {
-                    if ( row.getAtm() != null ) {
-                         openMap(row.getAtm());
+                    if (row.getAtm() != null) {
+                        openMap(row.getAtm());
                     }
                 }
             });
-            transactionsView.setAdapter(ca);
-        }
-    }
 
-    private void openMap(Atm atm) {
-        if (Utils.isNetworkAvailable(getActivity())) {
-            if (Utils.isGooglePlayServicesAvailable(getActivity())) {
-                MapFragment fragment = new MapFragment();
-                Bundle args = new Bundle();
-                args.putDouble("lat", atm.getLocation().getLat());
-                args.putDouble("lng", atm.getLocation().getLng());
-                args.putString("atmTitle", atm.getName());
-
-                fragment.setArguments(args);
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container, fragment).addToBackStack("map").commit();
-            }
-        } else {
-            Toast.makeText(getActivity(), "To view Map, you must be connected with the Internet.", Toast.LENGTH_LONG).show();
+            transactionsViewContainer.setAdapter(ca);
         }
     }
 
@@ -106,7 +87,6 @@ public class MainFragment extends CbaFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
-        ;
         ButterKnife.inject(this, view);
         return view;
     }
@@ -128,8 +108,8 @@ public class MainFragment extends CbaFragment {
         mListener = null;
     }
 
-
     /**
+     * @todo
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
@@ -142,5 +122,23 @@ public class MainFragment extends CbaFragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
+    }
+
+    private void openMap(Atm atm) {
+        if (Utils.isNetworkAvailable(getActivity())) {
+            if (Utils.isGooglePlayServicesAvailable(getActivity())) {
+                MapFragment fragment = new MapFragment();
+                Bundle args = new Bundle();
+                args.putDouble("lat", atm.getLocation().getLat());
+                args.putDouble("lng", atm.getLocation().getLng());
+                args.putString("atmTitle", atm.getName());
+
+                fragment.setArguments(args);
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container, fragment).addToBackStack("map").commit();
+            }
+        } else {
+            Toast.makeText(getActivity(), "To view Map, you must be connected with the Internet.", Toast.LENGTH_LONG).show();
+        }
     }
 }

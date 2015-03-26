@@ -1,7 +1,6 @@
-package au.com.commbank.app;
+package au.com.commbank.app.helper;
 
 import java.text.NumberFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -14,6 +13,9 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.ConnectionResult;
 
 import android.app.Dialog;
+
+import au.com.commbank.app.MainApplication;
+import au.com.commbank.app.R;
 
 
 /**
