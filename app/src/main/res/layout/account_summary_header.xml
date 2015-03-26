@@ -35,10 +35,9 @@
                     android:layout_alignParentTop="true"
                     android:layout_toEndOf="@+id/transactionalIcon"
                     android:layout_toRightOf="@+id/transactionalIcon"
-                    android:padding="@dimen/viewpadding"
                     android:text="Complete Access"
-                    android:textSize="@dimen/subHeadingTextSize"
-                    android:textStyle="bold" />
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/subHeadingTextSize" />
 
 
                 <TextView
@@ -48,11 +47,13 @@
                     android:layout_alignLeft="@+id/accountName"
                     android:layout_alignStart="@+id/accountName"
                     android:layout_below="@+id/accountName"
+                    android:layout_alignParentBottom="true"
                     android:padding="@dimen/viewpadding"
-                    android:text=""
+                    android:text="232343423342"
                     android:textColor="@color/greyText"
-                    android:textSize="@dimen/normalTextSize"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/smallTextSize"
+                    android:textStyle="bold"
+                     />
 
             </RelativeLayout>
 

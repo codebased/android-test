@@ -53,7 +53,7 @@ public class Utils {
 
     public static String displayDateFormat(Date effectiveDate) {
         SimpleDateFormat newFormat = new SimpleDateFormat(MainApplication.getInstance().getResources().getString(R.string.displayDateFormat));
-        return newFormat.format(effectiveDate);
+        return newFormat.format(effectiveDate).toUpperCase();
     }
 
     public static boolean isNetworkAvailable(Context ctx) {

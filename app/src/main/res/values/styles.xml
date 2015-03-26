@@ -25,6 +25,7 @@
         <item name="android:textColor">@color/actionBarTextColor</item>
         <item name="android:textSize">@dimen/actionBarTextSize</item>
         <item name="android:padding">@dimen/viewpadding</item>
+        <item name="android:fontFamily">sans-serif</item>
     </style>
 
 
