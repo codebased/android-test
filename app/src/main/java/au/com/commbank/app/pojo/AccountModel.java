@@ -118,6 +118,7 @@ public class AccountModel {
 
         // @todo it would be nice to have Mr. Lembda (lambdaJ Library)
         // here but lets leave it for the future. Its' java turn to copy C# :P
+        // otherwise buble sort could be good.
         for (Atm atm : getAtms()) {
             if (atm != null && atm.getId().equalsIgnoreCase(atmId)) {
                 return atm;
