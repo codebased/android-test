@@ -5,10 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import java.text.ParseException;
 import java.util.Date;
-
-import au.com.commbank.app.Utils;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 

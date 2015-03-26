@@ -1,18 +1,11 @@
 package au.com.commbank.app;
 
 import android.app.Application;
-import android.support.v7.app.ActionBarActivity;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.text.SimpleDateFormat;
-
-import dagger.Module;
 import dagger.ObjectGraph;
 
-/**
- * Created by codebased on 21/03/15.
- */
 public class MainApplication extends Application {
 
     private static ObjectGraph graph = null;
@@ -24,12 +17,7 @@ public class MainApplication extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
-
         graph = ObjectGraph.create(getModules());
-    }
-
-    private Object[] getModules() {
-        return new Object[]{new CbaModule()};
     }
 
     public void inject(Object target) {
@@ -50,5 +38,9 @@ public class MainApplication extends Application {
 
     public static ObjectGraph getObjectGraphInstance() {
         return graph;
+    }
+
+    private Object[] getModules() {
+        return new Object[]{new CbaModule()};
     }
 }

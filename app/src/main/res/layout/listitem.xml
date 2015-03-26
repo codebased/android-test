@@ -1,5 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_height="match_parent" android:layout_width="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="@dimen/smallviewpadding">
+
 
     <au.com.commbank.app.customview.TransactionHeaderRow
         android:id="@+id/transactionHeaderItem"
@@ -7,9 +9,9 @@
         android:layout_width="match_parent"/>
 
     <au.com.commbank.app.customview.TransactionRow
+        android:duplicateParentState="true"
         android:id="@+id/transactionItem"
         android:layout_height="match_parent"
         android:layout_width="match_parent"/>
-
 
 </LinearLayout>

@@ -3,11 +3,14 @@ package au.com.commbank.app;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import au.com.commbank.app.fragment.MainFragment;
 
 
 public class MainActivity extends ActionBarActivity implements MainFragment.OnFragmentInteractionListener {

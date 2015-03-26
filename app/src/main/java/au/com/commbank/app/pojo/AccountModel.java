@@ -1,10 +1,6 @@
 package au.com.commbank.app.pojo;
 
-import android.widget.Toast;
-
-import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -13,8 +9,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import au.com.commbank.app.MainApplication;
-import au.com.commbank.app.Utils;
+import au.com.commbank.app.helper.Utils;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -100,6 +95,8 @@ public class AccountModel {
 
     public List<Transaction> getAllTransactions() {
 
+        // @todo - to save memory resources I could have used transactions and attach the rest of pending with.
+        // But but but I left this for the future to improve the same.
         List<Transaction> transactions = new ArrayList<>();
 
         transactions.addAll(getTransactions());
@@ -115,4 +112,19 @@ public class AccountModel {
         return transactions;
     }
 
+    public Atm searchAtmById(String atmId) {
+
+        if (Utils.isEmptyOrNull(atmId)) return null;
+
+        // @todo it would be nice to have Mr. Lembda (lambdaJ Library)
+        // here but lets leave it for the future. Its' java turn to copy C# :P
+        // otherwise buble sort could be good.
+        for (Atm atm : getAtms()) {
+            if (atm != null && atm.getId().equalsIgnoreCase(atmId)) {
+                return atm;
+            }
+        }
+
+        return null;
+    }
 }

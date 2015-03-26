@@ -8,14 +8,15 @@
         android:layout_weight="2" android:text="THIS IS TEST" android:layout_height="wrap_content"
         android:textSize="@dimen/transactionHeaderTextSize"
         android:padding="@dimen/viewpadding"
+        android:textColor="@color/textColor"
         android:textStyle="bold"/>
     <au.com.commbank.app.customview.MomentTextView android:id="@+id/momentDate"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:padding="@dimen/viewpadding"
-        android:text="11 Dec 2014"
         android:layout_height="wrap_content"
         android:gravity="right"
+        android:textColor="@color/textColor"
         android:textSize="@dimen/transactionHeaderTextSize"
         android:textStyle="bold"
         />

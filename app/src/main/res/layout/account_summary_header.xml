@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/boxBackground"
-        android:padding="12dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
         android:stretchColumns="*">
 
         <TableRow
@@ -33,10 +38,9 @@
                     android:layout_alignParentTop="true"
                     android:layout_toEndOf="@+id/transactionalIcon"
                     android:layout_toRightOf="@+id/transactionalIcon"
-                    android:padding="@dimen/viewpadding"
                     android:text="Complete Access"
-                    android:textSize="@dimen/subHeadingTextSize"
-                    android:textStyle="bold" />
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/subHeadingTextSize" />
 
 
                 <TextView
@@ -46,11 +50,13 @@
                     android:layout_alignLeft="@+id/accountName"
                     android:layout_alignStart="@+id/accountName"
                     android:layout_below="@+id/accountName"
+                    android:layout_alignParentBottom="true"
                     android:padding="@dimen/viewpadding"
-                    android:text=""
+                    android:text="232343423342"
                     android:textColor="@color/greyText"
+                    android:textSize="@dimen/smallTextSize"
                     android:textStyle="bold"
-                    android:textSize="@dimen/normalTextSize" />
+                     />
 
             </RelativeLayout>
 
@@ -69,11 +75,11 @@
 
             <TextView
                 android:layout_width="0dp"
+                android:layout_gravity="left"
                 android:layout_weight="2"
                 android:background="@color/grayBackground"
                 android:text="@string/available_funds"
                 android:textColor="@color/greyText"
-                android:layout_gravity="left"
                 android:textSize="@dimen/normalTextSize" />
 
             <TextView
@@ -84,7 +90,7 @@
                 android:gravity="right"
                 android:padding="@dimen/viewpadding"
                 android:text=""
-                android:textColor="@color/greyText"
+                android:textColor="@color/textColor"
                 android:textSize="@dimen/normalTextSize"
                 android:textStyle="bold" />
         </TableRow>
@@ -98,17 +104,17 @@
 
             <View
                 android:layout_width="0dp"
-                android:layout_weight="1">
-            </View>
+                android:layout_weight="1"></View>
 
             <TextView
                 android:layout_width="0dp"
+                android:layout_gravity="left"
                 android:layout_weight="2"
                 android:background="@color/grayBackground"
                 android:text="@string/available_balance"
-                android:layout_gravity="left"
                 android:textColor="@color/greyText"
                 android:textSize="@dimen/normalTextSize" />
+
             <TextView
                 android:id="@+id/availableBalanceTV"
                 android:layout_width="0dp"
@@ -117,6 +123,7 @@
                 android:gravity="right"
                 android:padding="@dimen/viewpadding"
                 android:text=""
+                android:textStyle="bold"
                 android:textColor="@color/greyText"
                 android:textSize="@dimen/normalTextSize" />
         </TableRow>

@@ -3,12 +3,9 @@
     <string name="account_details">Account details</string>
     <string name="available_funds">Available funds</string>
     <string name="available_balance">Available balance</string>
-    <string name="action_settings">Settings</string>
-
-<!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_maps">Find us</string>
     <string name="dateformat">dd/MM/yyyy</string>
     <string name="displayDateFormat">dd MMM yyyy</string>
     <string name="datanotfound">Unable to retrieve data, please contact administrator.</string>
+    <string name="title_mainfragment">Account details</string>
+    <string name="title_mapfragement">Find us</string>
 </resources>
