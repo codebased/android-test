@@ -7,7 +7,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/boxBackground"
-        android:padding="12dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
         android:stretchColumns="*">
 
         <TableRow
@@ -87,7 +90,7 @@
                 android:gravity="right"
                 android:padding="@dimen/viewpadding"
                 android:text=""
-                android:textColor="@color/greyText"
+                android:textColor="@color/textColor"
                 android:textSize="@dimen/normalTextSize"
                 android:textStyle="bold" />
         </TableRow>
@@ -120,6 +123,7 @@
                 android:gravity="right"
                 android:padding="@dimen/viewpadding"
                 android:text=""
+                android:textStyle="bold"
                 android:textColor="@color/greyText"
                 android:textSize="@dimen/normalTextSize" />
         </TableRow>
