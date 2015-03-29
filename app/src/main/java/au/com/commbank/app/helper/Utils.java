@@ -27,6 +27,7 @@ public class Utils {
 
     public static String formatCurrency(Double value) {
 
+        if ( value == null ) return null;
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
         return formatter.format(value);
     }

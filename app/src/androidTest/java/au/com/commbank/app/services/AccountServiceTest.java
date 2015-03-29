@@ -14,6 +14,7 @@ public class AccountServiceTest extends TestCase {
     protected void setUp() throws Exception {
         super.setUp();
         // @todo could use mock framework - Mockito or Android Mock
+        // any way we are reading it from local json so I will leave this for now.
         sut = new AccountService();
     }
 
