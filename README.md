@@ -1,14 +1,24 @@
 NOTES:
 
-o	Dependency Injection (Dagger) & View Injection (Butterknife)
-o	Reusable Custom Adapter, using RecyclerView, with Header View
-o	Reusable Custom Components for Transactions List UI
-o	Google Map
-o	Separation of Concerns
-o	Json parser using Jackson Library.
-o	Centralized styling.
-o	Check with exception such as google service not available for Map , Internet availability etc.. 
-o	Test Automation (could be further improved by using mock frameworks - Mockito or android Mock or even UI test automation throgh robotium).
+
+Dependency Injection (Dagger) & View Injection (Butterknife)
+
+Reusable Custom Adapter, using RecyclerView, with Header View
+
+Reusable Custom Components for Transactions List UI
+
+Google Map
+
+Separation of Concerns
+
+Json parser using Jackson Library.
+
+Centralized styling.
+
+Check with exception such as google service not available for Map , Internet availability etc.. 
+
+Test Automation (could be further improved by using mock frameworks - Mockito or android Mock or even UI test automation throgh robotium).
+
 
 
 Point of Improvements:
@@ -52,3 +62,7 @@ class GroupedTransaction  implements
 }
 
 Then at AccountService.Get(..) you could make a group collection. But then again, many ways to do the same :))
+
+3. View Hierarchy improvements 
+
+http://developer.android.com/tools/debugging/debugging-ui.html
