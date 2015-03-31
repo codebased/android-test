@@ -63,6 +63,7 @@ class GroupedTransaction  implements
 
 Then at AccountService.Get(..) you could make a group collection. But then again, many ways to do the same :))
 
-3. View Hierarchy improvements 
+3.View Hierarchy improvements 
+
 
 http://developer.android.com/tools/debugging/debugging-ui.html
