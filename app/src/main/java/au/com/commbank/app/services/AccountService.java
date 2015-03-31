@@ -16,10 +16,11 @@ public class AccountService implements IAccountService {
         try {
 
             MainApplication application = MainApplication.getInstance();
-             // @todo instead of static here, I could use Dagger for that. Anyways leave it for this version.
+             // @todo instead of static object here, I could use Dagger for that. Anyways leave it for this version.
             InputStream stream = application.getApplicationContext().getAssets()
                     .open("exercise.json");
 
+             // @todo here too...
             AccountModel accountModel = MainApplication.getObjectMapperInstance().readValue(stream, AccountModel.class);
             return accountModel;
 
