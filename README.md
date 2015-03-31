@@ -67,3 +67,5 @@ Then at AccountService.Get(..) you could make a group collection. But then again
 
 
 http://developer.android.com/tools/debugging/debugging-ui.html
+
+4. Improving Google map marker icon
