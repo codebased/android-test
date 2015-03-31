@@ -16,6 +16,7 @@ public class AccountService implements IAccountService {
         try {
 
             MainApplication application = MainApplication.getInstance();
+             // @todo instead of static here, I could use Dagger for that. Anyways leave it for this version.
             InputStream stream = application.getApplicationContext().getAssets()
                     .open("exercise.json");
 
