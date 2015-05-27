@@ -14,6 +14,9 @@ import com.google.android.gms.common.ConnectionResult;
 
 import android.app.Dialog;
 
+import org.apache.log4j.Logger;
+
+import au.com.commbank.app.MainActivity;
 import au.com.commbank.app.MainApplication;
 import au.com.commbank.app.R;
 
@@ -73,5 +76,9 @@ public class Utils {
         } else {
             return true;
         }
+    }
+
+    public static Logger Log (Class<?> c) {
+        return Logger.getLogger(c);
     }
 }

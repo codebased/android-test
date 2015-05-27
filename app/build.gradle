@@ -37,7 +37,12 @@ dependencies {
     compile 'com.jakewharton:butterknife:6.1.0'
     compile 'com.google.android.gms:play-services:6.5.87'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.5.1'
+
     compile 'com.android.support:support-v4:22.0.0'
     provided 'com.squareup.dagger:dagger-compiler:1.2.2'
     compile 'com.android.support:recyclerview-v7:22.0.0'
+
+    // logging
+    compile 'de.mindpipe.android:android-logging-log4j:1.0.3'
+    compile 'log4j:log4j:1.2.17'
 }
